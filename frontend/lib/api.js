@@ -1,31 +1,51 @@
 import axios from 'axios';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
-const api = axios.create({
-  baseURL: API_BASE_URL,
+const client = axios.create({
+  baseURL: API_BASE,
   timeout: 10000,
 });
 
-// Métodos de Analytics
 export const analyticsAPI = {
-  getABCAnalysis: () => api.get('/analytics/abc-analysis'),
-  getStatistics: () => api.get('/analytics/statistics'),
+  getABCAnalysis: async () => {
+    const res = await client.get('/analytics/abc-analysis');
+    return res.data;
+  },
+  getStatistics: async () => {
+    const res = await client.get('/analytics/statistics');
+    return res.data;
+  },
 };
 
-// Métodos de Dashboard
 export const dashboardAPI = {
-  getKPIs: () => api.get('/dashboard/kpis'),
-  getSalesTrend: () => api.get('/dashboard/sales-trend'),
-  getInventoryDistribution: () => api.get('/dashboard/inventory-distribution'),
+  getKPIs: async () => {
+    const res = await client.get('/dashboard/kpis');
+    return res.data;
+  },
+  getSalesTrend: async () => {
+    const res = await client.get('/dashboard/sales-trend');
+    return res.data;
+  },
+  getInventoryDistribution: async () => {
+    const res = await client.get('/dashboard/inventory-distribution');
+    return res.data;
+  },
 };
 
-// Métodos de WMS
 export const wmsAPI = {
-  createCyclicCount: (data) => api.post('/wms/cyclic-count/create', data),
-  getCyclicCountOrders: () => api.get('/wms/cyclic-count/orders'),
-  updateTask: (orderId, taskId, data) =>
-    api.post(`/wms/cyclic-count/${orderId}/task/${taskId}`, data),
+  createCyclicCount: async (data) => {
+    const res = await client.post('/wms/cyclic-count/create', data);
+    return res.data;
+  },
+  getCyclicCountOrders: async () => {
+    const res = await client.get('/wms/cyclic-count/orders');
+    return res.data;
+  },
+  updateTask: async (orderId, taskId, data) => {
+    const res = await client.post(`/wms/cyclic-count/${orderId}/task/${taskId}`, data);
+    return res.data;
+  },
 };
 
-export default api;
+export default client;
