@@ -97,29 +97,30 @@ Watsonx procesa información de inventario, ventas y rendimiento, generando:
 
 ## 🧩 Estructura del Proyecto
 
+```
 calzando-a-mexico-pvi/
 ├── backend/
-│ ├── data/ # CSVs de datos
-│ ├── routes/ # Endpoints API
-│ ├── services/ # Lógica de negocio
-│ ├── server.js # Servidor Express
-│ └── package.json
+│   ├── data/                    # CSVs de datos
+│   ├── routes/                  # Endpoints API
+│   ├── services/                # Lógica de negocio
+│   ├── server.js                # Servidor Express
+│   └── package.json
 │
 ├── frontend/
-│ ├── app/
-│ │ ├── (dashboard)/ # Layout protegido
-│ │ │ ├── dashboard/
-│ │ │ ├── abc-analysis/
-│ │ │ ├── cyclic-counts/
-│ │ │ └── wms-store/
-│ │ ├── page.js # Login
-│ │ └── layout.js
-│ ├── lib/api.js # Cliente HTTP
-│ ├── public/
-│ └── package.json
+│   ├── app/
+│   │   ├── (dashboard)/         # Layout protegido
+│   │   │   ├── dashboard/
+│   │   │   ├── abc-analysis/
+│   │   │   ├── cyclic-counts/
+│   │   │   └── wms-store/
+│   │   ├── page.js              # Login
+│   │   └── layout.js
+│   ├── lib/api.js               # Cliente HTTP
+│   ├── public/
+│   └── package.json
 │
 └── README.markdown
-
+```
 
 ---
 
@@ -150,105 +151,117 @@ npm install
 npm run dev   # Modo desarrollo
 # o
 npm start     # Producción
+```
+Servidor en `http://localhost:5000`
 
+### Frontend
+```bash
+cd frontend
+npm install
+npm run dev   # Desarrollo
+# o
+npm run build && npm start  # Producción
+```
+App en `http://localhost:3000`
 
-App en http://localhost:3000
+---
 
-🔌 API Endpoints
-Analytics
+## 🔌 API Endpoints
 
-GET /api/analytics/abc-analysis
+### Analytics
+- `GET /api/analytics/abc-analysis`
+- `GET /api/analytics/statistics`
 
-GET /api/analytics/statistics
+### Dashboard
+- `GET /api/dashboard/kpis`
+- `GET /api/dashboard/sales-trend`
+- `GET /api/dashboard/inventory-distribution`
 
-Dashboard
+### WMS
+- `POST /api/wms/cyclic-count/create`
+- `GET /api/wms/cyclic-count/orders`
+- `POST /api/wms/cyclic-count/:orderId/task/:taskId`
 
-GET /api/dashboard/kpis
+---
 
-GET /api/dashboard/sales-trend
+## 🧪 Datos de Prueba
 
-GET /api/dashboard/inventory-distribution
+Coloca los siguientes CSV en `backend/data/`:
+- `INVENTARIO 2024.csv`
+- `VENTA 2023.csv`
+- `VENTA 2024.csv`
+- `Matriz de Roles As Is.csv`
 
-WMS
+---
 
-POST /api/wms/cyclic-count/create
+## 🔄 Flujo de Uso
 
-GET /api/wms/cyclic-count/orders
+1. **Login:** ingreso simulado.
+2. **Dashboard:** visualización de KPIs, insights y alertas IA.
+3. **Análisis ABC:** clasificación automática por rotación.
+4. **Conteos Cíclicos:** creación y seguimiento de órdenes.
+5. **WMS Tienda:** ejecución y confirmación de conteos.
 
-POST /api/wms/cyclic-count/:orderId/task/:taskId
+---
 
-🧪 Datos de Prueba
+## 🔐 Variables de Entorno
 
-Coloca los siguientes CSV en backend/data/:
-
-INVENTARIO 2024.csv
-
-VENTA 2023.csv
-
-VENTA 2024.csv
-
-Matriz de Roles As Is.csv
-
-🔄 Flujo de Uso
-
-Login: ingreso simulado.
-
-Dashboard: visualización de KPIs, insights y alertas IA.
-
-Análisis ABC: clasificación automática por rotación.
-
-Conteos Cíclicos: creación y seguimiento de órdenes.
-
-WMS Tienda: ejecución y confirmación de conteos.
-
-🔐 Variables de Entorno
-Backend (.env)
+### Backend (`.env`)
+```
 PORT=5000
+```
 
-Frontend (.env.local)
+### Frontend (`.env.local`)
+```
 NEXT_PUBLIC_API_URL=http://localhost:5000/api
-🧱 Roadmap
+```
 
- Autenticación real (JWT).
+---
 
- Integración con PostgreSQL.
+## 🧱 Roadmap
 
- Exportación de reportes PDF.
+- [ ] Autenticación real (JWT).
+- [ ] Integración con PostgreSQL.
+- [ ] Exportación de reportes PDF.
+- [ ] Notificaciones en tiempo real (WebSockets).
+- [ ] Sincronización móvil.
+- [ ] Pruebas unitarias.
+- [ ] Expansión de IA (proyecciones de demanda).
 
- Notificaciones en tiempo real (WebSockets).
+---
 
- Sincronización móvil.
+## 🧭 Estructura Organizacional To-Be
 
- Pruebas unitarias.
+- **Gerente de Operaciones de Tienda.**
+- **Supervisor de Recibo.**
+- **Jefe de Control de Inventarios.**
+- **Supervisor de Bodega (WMS).**
+- **Supervisor de Piso de Venta.**
 
- Expansión de IA (proyecciones de demanda).
+> Centralización de funciones → eficiencia y trazabilidad total.
 
-🧭 Estructura Organizacional To-Be
+---
 
-Gerente de Operaciones de Tienda.
+## 📊 KPIs por Nivel
 
-Supervisor de Recibo.
+| Nivel        | Métricas Clave |
+|---------------|----------------|
+| **Estratégico** | Rotación general, % venta perdida, ERI nacional |
+| **Táctico** | Días de inventario, ERI por tienda, % conteos completados |
+| **Operativo** | Folios generados vs. completados, piezas contadas/día |
 
-Jefe de Control de Inventarios.
+---
 
-Supervisor de Bodega (WMS).
+## 👥 Autoría
 
-Supervisor de Piso de Venta.
+**Equipo de Desarrollo - Calzando a México by The Deoders**  
+Con integración cognitiva impulsada por **IBM watsonx Orchestrate**
 
-Centralización de funciones → eficiencia y trazabilidad total.
+---
 
-📊 KPIs por Nivel
-Nivel	Métricas Clave
-Estratégico	Rotación general, % venta perdida, ERI nacional
-Táctico	Días de inventario, ERI por tienda, % conteos completados
-Operativo	Folios generados vs. completados, piezas contadas/día
-👥 Autoría
+## ⚖️ Licencia
 
-Equipo de Desarrollo - Calzando a México by The Deoders
-Con integración cognitiva impulsada por IBM watsonx Orchestrate
-
-⚖️ Licencia
-
-Privado – Calzando a México © 2025
+Privado – Calzando a México © 2025  
 Uso restringido a fines académicos y empresariales.
 
+---
