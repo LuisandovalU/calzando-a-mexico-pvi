@@ -1,8 +1,8 @@
-# 👟 Calzando a México - Sistema WMS & BI
+# Calzando a México - Sistema WMS & BI
 
 Sistema integral de gestión de inventario, análisis ABC y conteos cíclicos para la empresa Calzando a México.
 
-## 📋 Descripción del Proyecto
+## Descripción del Proyecto
 
 **Calzando a México** es una solución empresarial que integra:
 
@@ -11,7 +11,7 @@ Sistema integral de gestión de inventario, análisis ABC y conteos cíclicos pa
 - **WMS Cíclico**: Gestión de conteos cíclicos con folios y asignación de tareas
 - **Tienda WMS**: Interface para empleados de tienda en conteos
 
-## 🚀 Características Principales
+## Características Principales
 
 ### Dashboard BI
 - KPIs en tiempo real: Stock total, productos, ventas, crecimiento
@@ -34,7 +34,7 @@ Sistema integral de gestión de inventario, análisis ABC y conteos cíclicos pa
 - Confirmación de cantidades por SKU y ubicación
 - Vista de inventario en tiempo real
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 calzando-a-mexico-pvi/
@@ -61,7 +61,7 @@ calzando-a-mexico-pvi/
 └── README.md
 ```
 
-## 🛠 Stack Tecnológico
+## Stack Tecnológico
 
 ### Backend
 - **Node.js + Express**: API REST
@@ -74,7 +74,7 @@ calzando-a-mexico-pvi/
 - **Recharts**: Gráficas
 - **Axios**: HTTP client
 
-## 📦 Instalación
+## Instalación
 
 ### Backend
 
@@ -124,7 +124,7 @@ Coloca los archivos CSV en `backend/data/`:
 - `VENTA 2024.csv`
 - `Matriz de Roles As Is.csv`
 
-## 🎯 Flujo de Uso
+## Flujo de Uso
 
 ### 1. Login
 Usuario ingresa a `/` con credenciales
@@ -143,7 +143,7 @@ Revisa categorización de productos por importancia
 ### 5. WMS Tienda
 Empleados confirman cantidades de inventario
 
-## 🔑 Variables de Entorno
+## Variables de Entorno
 
 ### Backend (`.env`)
 ```
@@ -155,7 +155,7 @@ PORT=5000
 NEXT_PUBLIC_API_URL=http://localhost:5000/api
 ```
 
-## 🧪 Pruebas
+## Pruebas
 
 ### Backend
 ```bash
@@ -168,14 +168,14 @@ npm test  # (a implementar)
 npm run lint
 ```
 
-## 📝 Notas de Desarrollo
+## Notas de Desarrollo
 
 - El login es simulado (botón directo a dashboard)
 - Los datos de WMS se guardan en memoria (sin BD)
 - Los gráficos utilizan datos simulados (integrar con backend en prod)
 - Falta autenticación real (JWT recomendado)
 
-## 🚀 Próximos Pasos
+## Próximos Pasos
 
 - [ ] Implementar autenticación con JWT
 - [ ] Integrar base de datos (PostgreSQL)
@@ -184,10 +184,10 @@ npm run lint
 - [ ] Sincronización móvil
 - [ ] Tests unitarios
 
-## 👤 Autor
+## Autor
 
-Equipo de Desarrollo - Calzando a México
+Equipo de Desarrollo - Calzando a México by The Deoders
 
 ## 📄 Licencia
 
-Privado - Calzando a México 2024
+Privado - Calzando a México 2025
