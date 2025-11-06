@@ -100,7 +100,7 @@ npm run build && npm start  # Producción
 
 App en `http://localhost:3000`
 
-## 🔌 API Endpoints
+## API Endpoints
 
 ### Analytics
 - `GET /api/analytics/abc-analysis` - Análisis ABC
@@ -116,7 +116,7 @@ App en `http://localhost:3000`
 - `GET /api/wms/cyclic-count/orders` - Listar órdenes
 - `POST /api/wms/cyclic-count/:orderId/task/:taskId` - Actualizar tarea
 
-## 📊 Datos de Prueba
+## Datos de Prueba
 
 Coloca los archivos CSV en `backend/data/`:
 - `INVENTARIO 2024.csv`
@@ -188,6 +188,6 @@ npm run lint
 
 Equipo de Desarrollo - Calzando a México by The Deoders
 
-## 📄 Licencia
+## Licencia
 
 Privado - Calzando a México 2025
