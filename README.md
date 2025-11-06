@@ -1,193 +1,254 @@
-# Calzando a México - Sistema WMS & BI
+# Calzando a México - Sistema WMS, BI & IBM watsonx Integration
 
-Sistema integral de gestión de inventario, análisis ABC y conteos cíclicos para la empresa Calzando a México.
+**Transformando la gestión de inventario y toma de decisiones con inteligencia artificial, automatización y análisis de datos.**
 
-## Descripción del Proyecto
+---
 
-**Calzando a México** es una solución empresarial que integra:
+## 📘 Visión del Proyecto
 
-- **BI Dashboard**: Visualización de KPIs, tendencias de ventas e inventario
-- **Análisis ABC**: Categorización automática de productos por importancia (Pareto)
-- **WMS Cíclico**: Gestión de conteos cíclicos con folios y asignación de tareas
-- **Tienda WMS**: Interface para empleados de tienda en conteos
+**Calzando a México** enfrenta un problema crítico de Exactitud de Registro de Inventario (ERI ≈ 60%), derivado de procesos manuales, desarticulados y lentos.  
+Esta situación genera dos pérdidas operativas significativas:
 
-## Características Principales
+- **Sobre-inventario:** exceso de productos sin rotación.
+- **Venta perdida:** falta de disponibilidad del producto correcto para el cliente.
 
-### Dashboard BI
-- KPIs en tiempo real: Stock total, productos, ventas, crecimiento
-- Gráficas de tendencias de ventas (líneas)
-- Distribución de inventario (donuts)
+**La solución:**  
+Una **Plataforma de Inventario Inteligente (I.I.)**, basada en un **WMS (Warehouse Management System)** y un **BI Dashboard**, que automatiza la gestión, análisis y toma de decisiones con **IBM watsonx Orchestrate**.
 
-### Análisis ABC
-- Categorización automática de SKUs
-- Cálculo de rotación de inventario
-- Tabla interactiva con estadísticas por categoría
+Esta plataforma busca:
+- Aumentar la exactitud del inventario.
+- Optimizar la rotación de productos.
+- Digitalizar el flujo operativo completo entre CEDIS y tiendas.
+- Convertir los datos en información accionable mediante IA.
 
-### Conteos Cíclicos
-- **Creación en 5 clics**: Tienda → Zona → Responsable → Incluir Todos/SKUs → Crear
-- Generación automática de folios (1000+)
-- Historial de órdenes
-- Estados: Pendiente → Completada
+---
 
-### WMS Tienda
-- Asignación de tareas de conteo
-- Confirmación de cantidades por SKU y ubicación
-- Vista de inventario en tiempo real
+## 🧠 Integración con IBM watsonx Orchestrate
 
-## Estructura del Proyecto
+### Descripción General
+El sistema WMS “Calzando a México” incorpora **IBM watsonx Orchestrate** para automatizar el análisis inteligente de datos y ofrecer asistencia cognitiva dentro del panel principal (Dashboard).
 
-```
+Watsonx procesa información de inventario, ventas y rendimiento, generando:
+- Recomendaciones inteligentes en tiempo real.
+- Alertas preventivas.
+- Resúmenes ejecutivos redactados en lenguaje natural.
+
+### Flujo de Integración
+
+1. **Captura de datos:**  
+   Recolección de información clave (ventas, stock, rotación, ubicaciones).
+
+2. **Procesamiento en watsonx:**  
+   Los datos se envían al servicio de IA para su análisis semántico y estadístico.
+
+3. **Análisis inteligente:**  
+   Identifica tendencias, anomalías o comportamientos relevantes:
+   - Caídas o picos de venta.
+   - Sobreinventario.
+   - Alertas de baja rotación.
+
+4. **Retroalimentación automática:**  
+   El dashboard muestra un resumen claro con **insights** y **acciones sugeridas**.
+
+### Automatizaciones Clave
+
+- Análisis automático de KPIs.
+- Alertas de rendimiento anticipadas.
+- Recomendaciones proactivas.
+- Aprendizaje continuo basado en histórico.
+
+### Beneficios
+
+- **Eficiencia:** menos tiempo analizando, más decisiones estratégicas.  
+- **Precisión:** detección temprana de problemas de stock o ventas.  
+- **Visión integral:** correlación entre ventas, rotación e inventario.  
+- **Escalabilidad:** integración a proyecciones de demanda o pedidos.
+
+---
+
+## 🏗️ Arquitectura de la Solución
+
+### Módulos Principales
+
+1. **Dashboard BI**
+   - KPIs en tiempo real: Stock total, ventas, crecimiento.
+   - Gráficas: líneas (tendencias), donuts (inventario).
+   - Recomendaciones automáticas (IBM watsonx).
+
+2. **Análisis ABC**
+   - Clasificación A/B/C por rotación.
+   - Política de conteos inteligentes:
+     - A → Diario
+     - B → Semanal
+     - C → Quincenal
+
+3. **Conteos Cíclicos**
+   - Creación en 5 clics: Tienda → Zona → Responsable → SKUs → Crear.
+   - Folios automáticos (1000+).
+   - Estados: Pendiente / Completada.
+   - Historial de órdenes.
+
+4. **WMS Tienda**
+   - Confirmación de conteos.
+   - Visualización por ubicación (ej. `BOD-A-01`, `PISO-M-02`).
+   - Actualización en tiempo real.
+
+---
+
+## 🧩 Estructura del Proyecto
+
 calzando-a-mexico-pvi/
 ├── backend/
-│   ├── data/                    # CSVs de datos
-│   ├── routes/                  # Endpoints API
-│   ├── services/                # Lógica de negocio
-│   ├── server.js               # Servidor Express
-│   └── package.json
+│ ├── data/ # CSVs de datos
+│ ├── routes/ # Endpoints API
+│ ├── services/ # Lógica de negocio
+│ ├── server.js # Servidor Express
+│ └── package.json
 │
 ├── frontend/
-│   ├── app/
-│   │   ├── (dashboard)/         # Layout protegido
-│   │   │   ├── dashboard/
-│   │   │   ├── abc-analysis/
-│   │   │   ├── cyclic-counts/
-│   │   │   └── wms-store/
-│   │   ├── page.js              # Login
-│   │   └── layout.js
-│   ├── lib/api.js               # Cliente HTTP
-│   ├── public/
-│   └── package.json
+│ ├── app/
+│ │ ├── (dashboard)/ # Layout protegido
+│ │ │ ├── dashboard/
+│ │ │ ├── abc-analysis/
+│ │ │ ├── cyclic-counts/
+│ │ │ └── wms-store/
+│ │ ├── page.js # Login
+│ │ └── layout.js
+│ ├── lib/api.js # Cliente HTTP
+│ ├── public/
+│ └── package.json
 │
-└── README.md
-```
+└── README.markdown
 
-## Stack Tecnológico
+
+---
+
+## ⚙️ Stack Tecnológico
 
 ### Backend
-- **Node.js + Express**: API REST
-- **CSV-Parse**: Lectura de archivos
-- **CORS**: Integración frontend-backend
+- **Node.js + Express** → API REST.
+- **CSV-Parse** → Lectura de datos.
+- **CORS** → Integración frontend-backend.
 
 ### Frontend
-- **Next.js 14**: Framework React con App Router
-- **Tailwind CSS**: Estilos
-- **Recharts**: Gráficas
-- **Axios**: HTTP client
+- **Next.js 14** → Framework React con App Router.
+- **Tailwind CSS** → Estilos modernos.
+- **Recharts** → Gráficas dinámicas.
+- **Axios** → Cliente HTTP.
 
-## Instalación
+### Inteligencia Artificial
+- **IBM watsonx Orchestrate** → Análisis predictivo, insights y automatización cognitiva.
+
+---
+
+## 🚀 Instalación
 
 ### Backend
-
 ```bash
 cd backend
 npm install
-npm run dev  # Desarrollo con nodemon
+npm run dev   # Modo desarrollo
 # o
-npm start    # Producción
-```
+npm start     # Producción
 
-Servidor en `http://localhost:5000`
 
-### Frontend
+App en http://localhost:3000
 
-```bash
-cd frontend
-npm install
-npm run dev  # Desarrollo
-# o
-npm run build && npm start  # Producción
-```
+🔌 API Endpoints
+Analytics
 
-App en `http://localhost:3000`
+GET /api/analytics/abc-analysis
 
-## API Endpoints
+GET /api/analytics/statistics
 
-### Analytics
-- `GET /api/analytics/abc-analysis` - Análisis ABC
-- `GET /api/analytics/statistics` - Estadísticas ABC
+Dashboard
 
-### Dashboard
-- `GET /api/dashboard/kpis` - KPIs
-- `GET /api/dashboard/sales-trend` - Tendencia de ventas
-- `GET /api/dashboard/inventory-distribution` - Distribución inventario
+GET /api/dashboard/kpis
 
-### WMS
-- `POST /api/wms/cyclic-count/create` - Crear orden
-- `GET /api/wms/cyclic-count/orders` - Listar órdenes
-- `POST /api/wms/cyclic-count/:orderId/task/:taskId` - Actualizar tarea
+GET /api/dashboard/sales-trend
 
-## Datos de Prueba
+GET /api/dashboard/inventory-distribution
 
-Coloca los archivos CSV en `backend/data/`:
-- `INVENTARIO 2024.csv`
-- `VENTA 2023.csv`
-- `VENTA 2024.csv`
-- `Matriz de Roles As Is.csv`
+WMS
 
-## Flujo de Uso
+POST /api/wms/cyclic-count/create
 
-### 1. Login
-Usuario ingresa a `/` con credenciales
+GET /api/wms/cyclic-count/orders
 
-### 2. Dashboard
-Visualiza KPIs y gráficas de negocio
+POST /api/wms/cyclic-count/:orderId/task/:taskId
 
-### 3. Análisis ABC
-Revisa categorización de productos por importancia
+🧪 Datos de Prueba
 
-### 4. Conteos Cíclicos
-- Crea órdenes de conteo (5 clics)
-- Asigna responsables
-- Visualiza histórico
+Coloca los siguientes CSV en backend/data/:
 
-### 5. WMS Tienda
-Empleados confirman cantidades de inventario
+INVENTARIO 2024.csv
 
-## Variables de Entorno
+VENTA 2023.csv
 
-### Backend (`.env`)
-```
+VENTA 2024.csv
+
+Matriz de Roles As Is.csv
+
+🔄 Flujo de Uso
+
+Login: ingreso simulado.
+
+Dashboard: visualización de KPIs, insights y alertas IA.
+
+Análisis ABC: clasificación automática por rotación.
+
+Conteos Cíclicos: creación y seguimiento de órdenes.
+
+WMS Tienda: ejecución y confirmación de conteos.
+
+🔐 Variables de Entorno
+Backend (.env)
 PORT=5000
-```
 
-### Frontend (`.env.local`)
-```
+Frontend (.env.local)
 NEXT_PUBLIC_API_URL=http://localhost:5000/api
-```
+🧱 Roadmap
 
-## Pruebas
+ Autenticación real (JWT).
 
-### Backend
-```bash
-npm test  # (a implementar)
-```
+ Integración con PostgreSQL.
 
-### Frontend
-```bash
-npm test  # (a implementar)
-npm run lint
-```
+ Exportación de reportes PDF.
 
-## Notas de Desarrollo
+ Notificaciones en tiempo real (WebSockets).
 
-- El login es simulado (botón directo a dashboard)
-- Los datos de WMS se guardan en memoria (sin BD)
-- Los gráficos utilizan datos simulados (integrar con backend en prod)
-- Falta autenticación real (JWT recomendado)
+ Sincronización móvil.
 
-## Próximos Pasos
+ Pruebas unitarias.
 
-- [ ] Implementar autenticación con JWT
-- [ ] Integrar base de datos (PostgreSQL)
-- [ ] Exportar reportes PDF
-- [ ] Notificaciones en tiempo real (WebSockets)
-- [ ] Sincronización móvil
-- [ ] Tests unitarios
+ Expansión de IA (proyecciones de demanda).
 
-## Autor
+🧭 Estructura Organizacional To-Be
+
+Gerente de Operaciones de Tienda.
+
+Supervisor de Recibo.
+
+Jefe de Control de Inventarios.
+
+Supervisor de Bodega (WMS).
+
+Supervisor de Piso de Venta.
+
+Centralización de funciones → eficiencia y trazabilidad total.
+
+📊 KPIs por Nivel
+Nivel	Métricas Clave
+Estratégico	Rotación general, % venta perdida, ERI nacional
+Táctico	Días de inventario, ERI por tienda, % conteos completados
+Operativo	Folios generados vs. completados, piezas contadas/día
+👥 Autoría
 
 Equipo de Desarrollo - Calzando a México by The Deoders
+Con integración cognitiva impulsada por IBM watsonx Orchestrate
 
-## Licencia
+⚖️ Licencia
 
-Privado - Calzando a México 2025
+Privado – Calzando a México © 2025
+Uso restringido a fines académicos y empresariales.
+
